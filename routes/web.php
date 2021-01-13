@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// パラメーターを利用したルーティング
+// ?あり変数だと任意パラメーターとなり、パラメーターがなくてもよくなる
 // Route::get('hello/{msg?}', function ($msg="no message"){
 //     $html = <<<EOF
 //     <h1>HELLO:{$msg}</h1>
@@ -26,3 +27,4 @@ Route::get('/', function () {
 // });
 
 Route::get('hello', 'HelloController@index');
+Route::get('hello/other', 'HelloController@other');
