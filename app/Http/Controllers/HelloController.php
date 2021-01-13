@@ -55,4 +55,9 @@ class HelloController extends Controller
     //     . tag('h1','Single') . tag('p','this is Single page')
     //     . $end;
     // }
+
+    public function index(){
+        $data = ['msg'=>'これはコントローラーから渡されたメッセージです。'];
+        return view("hello.index", $data);
+    }
 }
