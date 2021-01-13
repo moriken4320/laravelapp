@@ -22,18 +22,18 @@ function tag($tag, $txt) {
 
 class HelloController extends Controller
 {
-    public function index(Request $request, Response $response){
-        global $head, $style, $body, $end;
+    // public function index(Request $request, Response $response){
+    //     global $head, $style, $body, $end;
 
-        $html = $head . tag('title','Hello/Index') . $style . 
-            $body
-            . tag('h1','Hello')
-            . tag('h3','Request') . tag('pre',"{$request}")
-            . tag('h3','Response') . tag('pre',"{$response}")
-            . $end;
-        $response->setContent($html);
-        return $response;
-    }
+    //     $html = $head . tag('title','Hello/Index') . $style . 
+    //         $body
+    //         . tag('h1','Hello')
+    //         . tag('h3','Request') . tag('pre',"{$request}")
+    //         . tag('h3','Response') . tag('pre',"{$response}")
+    //         . $end;
+    //     $response->setContent($html);
+    //     return $response;
+    // }
 
     // public function other(){
     //     global $head, $style, $body, $end;
