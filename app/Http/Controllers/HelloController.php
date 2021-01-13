@@ -61,8 +61,13 @@ class HelloController extends Controller
     //     return view("hello.index", $data);
     // }
 
-    public function index(Request $request){
-        $data = ['msg'=>'これはコントローラーから渡されたメッセージです。', 'id'=>$request->id];
+    // public function index(Request $request){
+    //     $data = ['msg'=>'これはコントローラーから渡されたメッセージです。', 'id'=>$request->id];
+    //     return view("hello.index", $data);
+    // }
+
+    public function index(){
+        $data = ['msg'=>'これはコントローラーから渡されたメッセージです。'];
         return view("hello.index", $data);
     }
 }
