@@ -70,4 +70,12 @@ class HelloController extends Controller
         $data = ['msg'=>'これはコントローラーから渡されたメッセージです。'];
         return view("hello.index", $data);
     }
+    
+    public function post(Request $request){
+        $msg = $request->msg;
+        $data = [
+            'msg'=>'こんにちは、' . $msg . 'さん！',
+        ];
+        return view("hello.index", $data);
+    }
 }
