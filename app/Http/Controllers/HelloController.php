@@ -25,7 +25,7 @@ class HelloController extends Controller
     // public function index(Request $request, Response $response){
     //     global $head, $style, $body, $end;
 
-    //     $html = $head . tag('title','Hello/Index') . $style . 
+    //     $html = $head . tag('title','Hello/Index') . $style .
     //         $body
     //         . tag('h1','Hello')
     //         . tag('h3','Request') . tag('pre',"{$request}")
@@ -38,7 +38,7 @@ class HelloController extends Controller
     // public function other(){
     //     global $head, $style, $body, $end;
 
-    //     $html = $head . tag('title','Hello/Other') . $style . 
+    //     $html = $head . tag('title','Hello/Other') . $style .
     //         $body
     //         . tag('h1','Other') . tag('p','this is Other page')
     //         . $end;
@@ -49,8 +49,8 @@ class HelloController extends Controller
     // {
     //     global $head, $style, $body, $end;
 
-    //     return 
-    //     $head . tag('title','Hello/Single') . $style . 
+    //     return
+    //     $head . tag('title','Hello/Single') . $style .
     //     $body
     //     . tag('h1','Single') . tag('p','this is Single page')
     //     . $end;
@@ -67,15 +67,11 @@ class HelloController extends Controller
     // }
 
     public function index(){
-        $data = ['msg'=>'これはコントローラーから渡されたメッセージです。'];
-        return view("hello.index", $data);
+        $data = ['one','two','three','four','five'];
+        return view("hello.index", ['data'=>$data]);
     }
-    
+
     public function post(Request $request){
-        $msg = $request->msg;
-        $data = [
-            'msg'=>'こんにちは、' . $msg . 'さん！',
-        ];
-        return view("hello.index", $data);
+        return view("hello.index", ['msg'=>$request->msg]);
     }
 }

@@ -24,7 +24,52 @@
 
 <body>
   <h1>Blade/Index</h1>
+  {{-- @if ($msg != '')
   <p>{{$msg}}</p>
+  @else
+  <p>何か書いてください</p>
+  @endif --}}
+
+  {{-- @isset($msg)
+  <p>{{$msg}}</p>
+  @else
+  <p>何か書いてください</p>
+  @endisset --}}
+
+  {{-- <p>&#064;foreachディレクティブの例</p>
+  <ol>
+    @foreach ($data as $item)
+        <li>
+            {{ $item }}
+        </li>
+    @endforeach
+  </ol> --}}
+
+  <p>&#064;forディレクティブの例</p>
+  <ol>
+      {{-- @for ($i = 1; $i < 100; $i++)
+
+          @if ($i % 2 == 1)
+            @continue
+          @elseif ($i <= 10)
+            <li>No, {{ $i }}
+          @else
+            @break
+          @endif
+      @endfor --}}
+      @foreach ($data as $item)
+          @if ($loop->first)
+            <p>※データ一覧</p>
+            <ul>
+          @endif
+            <li>No,{{ $loop->iteration }} . {{ $item }}</li>
+          @if ($loop->last)
+            </ul>
+            <p>ーーここまで</p>
+          @endif
+      @endforeach
+  </ol>
+
   <form method="POST" action="/hello">
     @csrf
     <input type="text" name="msg">
