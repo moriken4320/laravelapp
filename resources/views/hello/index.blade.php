@@ -45,18 +45,20 @@
     @endforeach
   </ol> --}}
 
-  <p>&#064;forディレクティブの例</p>
+  {{-- <p>&#064;forディレクティブの例</p>
   <ol>
-      {{-- @for ($i = 1; $i < 100; $i++)
+      @for ($i = 1; $i < 100; $i++)
+        @if ($i % 2 == 1)
+          @continue
+        @elseif ($i <= 10)
+          <li>No, {{ $i }}
+        @else
+          @break
+        @endif
+      @endfor
+  </ol> --}}
 
-          @if ($i % 2 == 1)
-            @continue
-          @elseif ($i <= 10)
-            <li>No, {{ $i }}
-          @else
-            @break
-          @endif
-      @endfor --}}
+  {{-- <p>&#064;forディレクティブの例</p>
       @foreach ($data as $item)
           @if ($loop->first)
             <p>※データ一覧</p>
@@ -68,6 +70,19 @@
             <p>ーーここまで</p>
           @endif
       @endforeach
+  </ol> --}}
+
+  <p>&#064;whileディレクティブの例</p>
+  <ol>
+    @php
+        $counter = 0;
+    @endphp
+    @while ($counter < count($data))
+    <li>{{ $data[$counter] }}</li>
+    @php
+        $counter++;
+    @endphp
+    @endwhile
   </ol>
 
   <form method="POST" action="/hello">
