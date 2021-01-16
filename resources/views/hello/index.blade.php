@@ -104,20 +104,21 @@
 
 @section('content')
 <p>ここが本文のコンテンツです。</p>
-<p>必要なだけ記述できます。</p>
+<p>Controller value<br>'message' = {{ $message }}</p>
+<p>ViewComposer value<br>'view_message' = {{ $view_message }}</p>
 
-@component('components.message')
+{{-- @component('components.message')
 @slot('msg_title','CAUTION!')
 @slot('msg_content')
 これはメッセージの表示です。
 @endslot
-@endcomponent
+@endcomponent --}}
 
-@include('components.message', ['msg_title'=>'OK', 'msg_content'=>'サブビューです。'])
+{{-- @include('components.message', ['msg_title'=>'OK', 'msg_content'=>'サブビューです。']) --}}
 
-<ul>
+{{-- <ul>
     @each('components.item', $data, 'item')
-</ul>
+</ul> --}}
 
 @endsection
 

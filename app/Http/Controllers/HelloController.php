@@ -67,18 +67,22 @@ class HelloController extends Controller
     //     return view("hello.index", $data);
     // }
 
-    public function index()
-    {
-        $data = [
-            ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
-            ['name'=>'田中はなこ', 'mail'=>'hanako@flower'],
-            ['name'=>'鈴木幸子', 'mail'=>'sachico@happy']
-        ];
-        return view("hello.index", ['data' => $data]);
-    }
+    // public function index()
+    // {
+    //     $data = [
+    //         ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
+    //         ['name'=>'田中はなこ', 'mail'=>'hanako@flower'],
+    //         ['name'=>'鈴木幸子', 'mail'=>'sachico@happy']
+    //     ];
+    //     return view("hello.index", ['data' => $data]);
+    // }
 
-    public function post(Request $request)
-    {
-        return view("hello.index", ['msg' => $request->msg]);
+    // public function post(Request $request)
+    // {
+    //     return view("hello.index", ['msg' => $request->msg]);
+    // }
+
+    public function index(){
+        return view('hello.index', ['message'=>'Hello!']);
     }
 }
