@@ -82,7 +82,8 @@ class HelloController extends Controller
     //     return view("hello.index", ['msg' => $request->msg]);
     // }
 
-    public function index(){
-        return view('hello.index', ['message'=>'Hello!']);
+    // middlewareによってリクエストに含まれた$dataをheool.indexビューに渡す。
+    public function index(Request $request){
+        return view('hello.index', ['data'=>$request->data]);
     }
 }
