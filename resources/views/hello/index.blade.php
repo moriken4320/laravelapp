@@ -113,6 +113,9 @@
     @endforeach
 </table>
 
+<p>これは、<middleware>google.com</middleware>へのリンクです。</p>
+<p>これは、<middleware>yahoo.co.jp</middleware>へのリンクです。</p>
+
 {{-- @component('components.message')
 @slot('msg_title','CAUTION!')
 @slot('msg_content')

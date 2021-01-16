@@ -23,6 +23,15 @@ class HelloMiddleware
         ];
         //コントローラーに渡す前にリクエストに$dataをマージする
         $request->merge(['data'=>$data]);
-        return $next($request);
+
+        $response =  $next($request);
+
+        // $content内の$patternを$replaceに置換する
+        $content = $response->content();
+        $pattern = '/<middleware>(.*)<\/middleware>/i';
+        $replace = '<a href="http://$1">$1</a>'; //$1は正規表現の()の値に該当する。1ということは正規表現の1番目の()のことを表す。
+        $content = preg_replace($pattern, $replace, $content);
+        $response->setContent($content);
+        return $response;
     }
 }
