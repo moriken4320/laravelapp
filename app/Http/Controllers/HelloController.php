@@ -83,7 +83,24 @@ class HelloController extends Controller
     // }
 
     // middlewareによってリクエストに含まれた$dataをheool.indexビューに渡す。
-    public function index(Request $request){
-        return view('hello.index', ['data'=>$request->data]);
+    // public function index(Request $request){
+    //     return view('hello.index', ['data'=>$request->data]);
+    // }
+
+
+    public function index(Request $request)
+    {
+        return view('hello.index', ['msg'=>'フォームを入力：']);
+    }
+
+    public function post(Request $request)
+    {
+        $validate_rule = [
+            'name' => 'required',
+            'mail' => 'email',
+            'age' => 'numeric|between:0,150',//複数のルールを適用する場合「|」でつなげる
+        ];
+        $this->validate($request, $validate_rule);
+        return view('hello.index', ['msg'=>'正しく入力されました！']);
     }
 }
