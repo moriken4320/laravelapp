@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\HelloMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -13,6 +14,8 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    //  グローバルミドルウェアの登録場所(全てのアクセスで実行)
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -21,6 +24,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // \App\Http\Middleware\HelloMiddleware::class,
     ];
 
     /**
@@ -43,6 +47,10 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'hello' => [
+            \App\Http\Middleware\HelloMiddleware::class,
+        ],
     ];
 
     /**
@@ -62,5 +70,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'hello' => \App\Http\Middleware\HelloMiddleware::class,//ミドルウェアの登録
     ];
 }
