@@ -16,29 +16,30 @@ EOF;
 $body = '</head><body>';
 $end = '</body></html>';
 
-function tag($tag, $txt) {
+function tag($tag, $txt)
+{
     return "<{$tag}>" . $txt . "</{$tag}>";
 }
 
 class HelloController extends Controller
 {
-    public function index(Request $request, Response $response){
-        global $head, $style, $body, $end;
+    // public function index(Request $request, Response $response){
+    //     global $head, $style, $body, $end;
 
-        $html = $head . tag('title','Hello/Index') . $style . 
-            $body
-            . tag('h1','Hello')
-            . tag('h3','Request') . tag('pre',"{$request}")
-            . tag('h3','Response') . tag('pre',"{$response}")
-            . $end;
-        $response->setContent($html);
-        return $response;
-    }
+    //     $html = $head . tag('title','Hello/Index') . $style .
+    //         $body
+    //         . tag('h1','Hello')
+    //         . tag('h3','Request') . tag('pre',"{$request}")
+    //         . tag('h3','Response') . tag('pre',"{$response}")
+    //         . $end;
+    //     $response->setContent($html);
+    //     return $response;
+    // }
 
     // public function other(){
     //     global $head, $style, $body, $end;
 
-    //     $html = $head . tag('title','Hello/Other') . $style . 
+    //     $html = $head . tag('title','Hello/Other') . $style .
     //         $body
     //         . tag('h1','Other') . tag('p','this is Other page')
     //         . $end;
@@ -49,10 +50,35 @@ class HelloController extends Controller
     // {
     //     global $head, $style, $body, $end;
 
-    //     return 
-    //     $head . tag('title','Hello/Single') . $style . 
+    //     return
+    //     $head . tag('title','Hello/Single') . $style .
     //     $body
     //     . tag('h1','Single') . tag('p','this is Single page')
     //     . $end;
     // }
+
+    // public function index($id="zero"){
+    //     $data = ['msg'=>'これはコントローラーから渡されたメッセージです。', 'id'=>$id];
+    //     return view("hello.index", $data);
+    // }
+
+    // public function index(Request $request){
+    //     $data = ['msg'=>'これはコントローラーから渡されたメッセージです。', 'id'=>$request->id];
+    //     return view("hello.index", $data);
+    // }
+
+    public function index()
+    {
+        $data = [
+            ['name'=>'山田たろう', 'mail'=>'taro@yamada'],
+            ['name'=>'田中はなこ', 'mail'=>'hanako@flower'],
+            ['name'=>'鈴木幸子', 'mail'=>'sachico@happy']
+        ];
+        return view("hello.index", ['data' => $data]);
+    }
+
+    public function post(Request $request)
+    {
+        return view("hello.index", ['msg' => $request->msg]);
+    }
 }
