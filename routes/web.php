@@ -38,8 +38,11 @@ Route::get('/', function () {
 
 
 // Route::get('hello/{id?}', 'HelloController@index');
-Route::get('hello', 'HelloController@index');
+// Route::get('hello', 'HelloController@index');
 // Route::post('hello', 'HelloController@post');
 
 // メソッドチェーンを使って、middlewareを追加(複数追加可能。->でつなげるだけ)
 // Route::get('hello', 'HelloController@index')->middleware(HelloMiddleware::class);
+
+// グループ化したミドルウェアを設定。
+Route::get('hello', 'HelloController@index')->middleware('hello');
