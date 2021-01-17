@@ -90,21 +90,21 @@ class HelloController extends Controller
     // }
 
 
-    public function index(Request $request)
-    {
-        // クエリー文字列でバリデーションする場合、query()メソッドを使う
-        $validator = Validator::make($request->query(), [
-            'id'=>'required',
-            'pass'=>'required',
-        ]);
-        if($validator->fails()){
-            $msg = 'クエリーに問題があります。';
-        }else{
-            $msg = 'ID/PASSをうけつけました。フォームを入力ください。';
-        }
+    // public function index(Request $request)
+    // {
+    //     // クエリー文字列でバリデーションする場合、query()メソッドを使う
+    //     $validator = Validator::make($request->query(), [
+    //         'id'=>'required',
+    //         'pass'=>'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         $msg = 'クエリーに問題があります。';
+    //     }else{
+    //         $msg = 'ID/PASSをうけつけました。フォームを入力ください。';
+    //     }
 
-        return view('hello.index', ['msg'=>$msg, ]);
-    }
+    //     return view('hello.index', ['msg'=>$msg, ]);
+    // }
 
     // public function post(Request $request)
     // {
@@ -122,40 +122,50 @@ class HelloController extends Controller
     //     return view('hello.index', ['msg'=>'正しく入力されました！']);
     // }
 
-    public function post(Request $request)
+    // public function post(Request $request)
+    // {
+    //     $rules = [
+    //         'name'=>'required',
+    //         'mail'=>'email',
+    //         'age'=>'numeric',
+    //     ];
+    //     $messages = [
+    //         'name.required' => '名前は必ず入力してください。',
+    //         'mail.email' => 'メールアドレスが必要です。',
+    //         'age.numeric' => '年齢を整数で記入ください。',
+    //         'age.min' => '年齢は0以上で入力ください。',
+    //         'age.max' => '年齢は150以下で入力ください。',
+    //     ];
+
+    //     // バリデータを作成
+    //     $validator = Validator::make($request->all(), $rules, $messages);
+
+    //     // フォームに入力された年齢が整数であったら、「0以上であるか」のルールを追加する。
+    //     $validator->sometimes('age', 'min:0', function($input){
+    //         return !is_int($input->age);
+    //     });
+
+    //     // フォームに入力された年齢が整数であったら、「150以下であるか」のルールを追加する。
+    //     $validator->sometimes('age', 'max:150', function($input){
+    //         return !is_int($input->age);
+    //     });
+
+    //     // バリデーションに引っ掛かったら/helloにリダイレクトする(fails=失敗したら、passes=成功したら)
+    //     if($validator->fails()){
+    //         return redirect('/hello')
+    //             ->withErrors($validator) //エラーメッセージを渡す
+    //             ->withInput(); //フォーム内容を渡す
+    //     }
+    //     return view('hello.index', ['msg'=>'正しく入力されました！']);
+    // }
+
+    public function index(Request $request)
     {
-        $rules = [
-            'name'=>'required',
-            'mail'=>'email',
-            'age'=>'numeric',
-        ];
-        $messages = [
-            'name.required' => '名前は必ず入力してください。',
-            'mail.email' => 'メールアドレスが必要です。',
-            'age.numeric' => '年齢を整数で記入ください。',
-            'age.min' => '年齢は0以上で入力ください。',
-            'age.max' => '年齢は150以下で入力ください。',
-        ];
+        return view('hello.index', ['msg'=>'フォームを入力してください。']);
+    }
 
-        // バリデータを作成
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        // フォームに入力された年齢が整数であったら、「0以上であるか」のルールを追加する。
-        $validator->sometimes('age', 'min:0', function($input){
-            return !is_int($input->age);
-        });
-
-        // フォームに入力された年齢が整数であったら、「150以下であるか」のルールを追加する。
-        $validator->sometimes('age', 'max:150', function($input){
-            return !is_int($input->age);
-        });
-
-        // バリデーションに引っ掛かったら/helloにリダイレクトする(fails=失敗したら、passes=成功したら)
-        if($validator->fails()){
-            return redirect('/hello')
-                ->withErrors($validator) //エラーメッセージを渡す
-                ->withInput(); //フォーム内容を渡す
-        }
-        return view('hello.index', ['msg'=>'正しく入力されました！']);
+    public function post(HelloRequest $request)
+    {
+        return view('hello.index', ['msg'=>'正しく入力されました。']);
     }
 }
