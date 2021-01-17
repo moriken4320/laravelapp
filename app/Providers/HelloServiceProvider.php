@@ -32,9 +32,15 @@ class HelloServiceProvider extends ServiceProvider
         // );
 
         // HelloValidatorを読み込む
-        $validator = $this->app['validator'];
-        $validator->resolver(function($translator, $data, $rules, $messages){
-            return new HelloValidator($translator, $data, $rules, $messages);
+        // $validator = $this->app['validator'];
+        // $validator->resolver(function($translator, $data, $rules, $messages){
+        //     return new HelloValidator($translator, $data, $rules, $messages);
+        // });
+
+        // 特定のフォームだけオリジナルバリデーションを使いたい場合
+        Validator::extend('hello', function($attribute, $value, $parameters, $validator){
+            return $value % 2 == 0;
         });
+
     }
 }
