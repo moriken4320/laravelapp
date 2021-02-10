@@ -26,17 +26,6 @@ class HelloServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // view()->composer(
-        //     'hello.index',
-        //     'App\Http\Composers\HelloComposer'
-        // );
-
-        // HelloValidatorを読み込む
-        // $validator = $this->app['validator'];
-        // $validator->resolver(function($translator, $data, $rules, $messages){
-        //     return new HelloValidator($translator, $data, $rules, $messages);
-        // });
-
         // 特定のフォームだけオリジナルバリデーションを使いたい場合
         Validator::extend('hello', function($attribute, $value, $parameters, $validator){
             return $value % 2 == 0;
